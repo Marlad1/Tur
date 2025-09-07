@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import ItemInfo from './components/item/item.jsx'
+import Button from './components/button/button.jsx';
 
 function App() {
   const items = [
@@ -38,6 +39,10 @@ function App() {
           <p>Курорт Белокурихи</p>
         </div>
       </header>
+      <div className='change-dom'>
+        <Button text={"Места"}/>
+        <Button text={"Чебубеки"}/>
+      </div>
       <div className="items-container">
       {items.map((item) => (
         <ItemInfo

@@ -1,19 +1,27 @@
 import './item.css';
+import { IoMdHeartEmpty } from "react-icons/io";
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 
 function ItemInfo({ 
   imageUrl, 
   title, 
   description, 
   price,
-  className = '' 
+  className = '',
+  isFavorite=false
 }) {
   return (
     <div className={`item-info ${className}`}>
       <div className='image'>
         <img 
           src={imageUrl} 
-          alt={title || "Изображение товара"} 
+          alt={title || "Изображение"} 
         />    
+        <div className='icon-overlay'>
+            <FaRegHeart className='icon-outline'/>
+            {isFavorite ? <FaHeart color='red' /> : <FaHeart color='white'/>}
+        </div>
+        
       </div>
       
       {title && <h3 className="item-title">{title}</h3>}

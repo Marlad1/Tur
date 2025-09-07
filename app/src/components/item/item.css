@@ -4,6 +4,7 @@
     gap: 40px;
     justify-content: center;
     padding: 40px;
+    padding-top: 0;
 }
 
 .item-info {
@@ -11,7 +12,8 @@
     flex-direction: column;
     width: calc(33.333% - 40px);
     border-radius: 15px;
-    background-color: rgb(232, 255, 247);
+    background-color: #2a2b38;
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -19,6 +21,7 @@
 
 .image {
     width: 100%;
+    position: relative;
 }
 
 img {
@@ -26,6 +29,20 @@ img {
     border-radius: 15px;
     height: auto;
     display: block;
+}
+
+.icon-overlay {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+}
+
+.icon-outline{
+    position: absolute;
+    font-size: 26px;
 }
 
 .item-info h1, 
@@ -47,13 +64,16 @@ img {
     font-size: 18px;
     font-weight: 600;
     line-height: 1.2;
+    color: #ffffff;
+    
 }
 
 .item-description {
     margin: 0;
     padding: 0 15px 10px;
     font-size: 14px;
-    color: #666;
+    color: #919090;
+    font-weight: 500;
     line-height: 1.4;
 }
 
@@ -68,7 +88,7 @@ img {
 .item-price {
     font-size: 20px;
     font-weight: bold;
-    color: #333;
+    color: #c4c3ca;
 }
 
 .item-info:empty::before {
