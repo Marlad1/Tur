@@ -1,0 +1,119 @@
+.items-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    padding: 40px;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    width: calc(33.333% - 40px);
+    border-radius: 15px;
+    background-color: rgb(232, 255, 247);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.image {
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    border-radius: 15px;
+    height: auto;
+    display: block;
+}
+
+.item-info h1, 
+.item-info h2, 
+.item-info h3, 
+.item-info h4, 
+.item-info h5, 
+.item-info h6,
+.item-info p {
+    margin: 0;
+    padding: 5px 10px; /* Добавляем контролируемые отступы */
+}
+
+/* ... предыдущие стили ... */
+
+.item-title {
+    margin: 0;
+    padding: 10px 15px 5px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.item-description {
+    margin: 0;
+    padding: 0 15px 10px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px 15px;
+    margin-top: auto;
+}
+
+.item-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.item-info:empty::before {
+    content: "Нет данных";
+    display: block;
+    padding: 20px;
+    text-align: center;
+    color: #999;
+}
+
+/* Медиа-запросы для адаптивности текста */
+@media (max-width: 768px) {
+    .item-title {
+        font-size: 16px;
+        padding: 8px 12px 4px;
+    }
+    
+    .item-price {
+        font-size: 18px;
+    }
+    
+    .item-footer {
+        padding: 0 12px 12px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .item-info {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .item-info {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .item-info {
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .items-container {
+        gap: 15px;
+    }
+}
