@@ -1,8 +1,11 @@
 import './item.css';
 import { IoMdHeartEmpty } from "react-icons/io";
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import Button from '../button/button';
+import { routeRepository } from '../../services/repositories/routeRepository';
 
-function ItemInfo({ 
+function ItemInfo({
+	id, 
   imageUrl, 
   title, 
   description, 
@@ -10,6 +13,17 @@ function ItemInfo({
   className = '',
   isFavorite=false
 }) {
+	const addToRoutes = () => {
+		const item = {
+			id: id,
+			imageUrl: imageUrl,
+			title: title,
+			description: description,
+			price: price,
+		};
+		routeRepository.addRoute(item);
+	};
+
   return (
     <div className={`item-info ${className}`}>
       <div className='image'>
@@ -30,6 +44,7 @@ function ItemInfo({
       
       <div className="item-footer">
         {price && <span className="item-price">{price} ₽</span>}
+				<Button text="Добавить в маршрут" onClick={addToRoutes} />
       </div>
     </div>
   );

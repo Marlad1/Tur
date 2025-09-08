@@ -1,10 +1,11 @@
 import './button.css';
 
 function Button({ 
-  text
+  text,
+  onClick
 }) {
   return (
-    <button class="custom-btn btn">{text}</button>
+    <button class="custom-btn btn" onClick={onClick}>{text}</button>
   );
 }
 
