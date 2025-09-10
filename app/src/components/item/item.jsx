@@ -1,10 +1,10 @@
 import './item.css';
-import { IoMdHeartEmpty } from "react-icons/io";
-import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Button from '../button/button';
 import { routeRepository } from '../../services/repositories/routeRepository';
 
 function ItemInfo({
+  key,
 	id,
   imageUrl, 
   title, 
@@ -28,12 +28,14 @@ function ItemInfo({
 
 	return (
     <div className={`item-info ${className}`}>
-      <div className='image'>
+      <div className="item-image">
+      <Link to={`/place/${id}`}>
         <img 
           src={imageUrl} 
           alt={title || "Изображение"} 
         />
-      </div>
+      </Link>
+    </div>
       
       {title && <h3 className="item-title">{title}</h3>}
       
