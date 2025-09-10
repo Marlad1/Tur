@@ -191,7 +191,7 @@
 /* Темная тема */
 @media (prefers-color-scheme: dark) {
   .bottom-nav {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+    background: linear-gradient(135deg, rgba(70, 128, 68, 0.773), rgba(190, 233, 17, 0.754));
     border-top-color: rgba(255, 255, 255, 0.1);
   }
 }

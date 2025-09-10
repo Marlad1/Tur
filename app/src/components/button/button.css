@@ -1,4 +1,4 @@
-body {
+/* body {
   background: #151515;
 }
 .frame {
@@ -33,21 +33,6 @@ button {
   border: none;
   z-index: 1;
 }
-.btn:after {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 100%;
-  top: 0;
-  right: 0;
-  z-index: -1;
-  background-color: #fc7810;
-  border-radius: 5px;
-   box-shadow:inset 2px 2px 2px 0px rgba(234, 147, 102, 0.83),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
-  transition: all 0.3s ease;
-}
 .btn:hover {
   color: #151515;
 }
@@ -57,4 +42,4 @@ button {
 }
 .btn:active {
   top: 2px;
-}
+} */

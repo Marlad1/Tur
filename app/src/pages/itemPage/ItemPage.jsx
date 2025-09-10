@@ -1,30 +1,50 @@
-// ItemPage.jsx
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Button from "../../components/button/button";
 import { landmarkRepository } from "../../services/repositories/landmarksRepository";
+import { routeRepository } from "../../services/repositories/routeRepository";
 import './ItemPage.css'
 
 const ItemPage = () => {
-    const { id } = useParams(); // Получаем ID из URL
+    const { id } = useParams();
     const [landmark, setLandmark] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isAdded, setIsAdded] = useState(false);
 
     useEffect(() => {
-        // Имитация загрузки данных
         setTimeout(() => {
             const item = landmarkRepository.getLandmarkById(Number(id));
             setLandmark(item);
+            
+            // Проверяем, добавлен ли уже в маршрут
+            const routes = routeRepository.getRoutes();
+            setIsAdded(routes.some(route => route.id === item?.id));
+            
             setLoading(false);
         }, 100);
     }, [id]);
 
+    const handleAddToRoute = () => {
+        if (landmark) {
+            routeRepository.addRoute(landmark);
+            setIsAdded(true);
+        }
+    };
+
+    const handleRemoveFromRoute = () => {
+        if (landmark) {
+            routeRepository.removeRoute(landmark.id);
+            setIsAdded(false);
+        }
+    };
+
     if (loading) {
         return (
-            <div className="App">
+            <div className="item-page">
                 <Header />
                 <div className="loading-container">
-                    <p>Загрузка...</p>
+                    <div className="loading-spinner"></div>
+                    <p>Загружаем информацию...</p>
                 </div>
             </div>
         );
@@ -32,10 +52,12 @@ const ItemPage = () => {
 
     if (!landmark) {
         return (
-            <div className="App">
+            <div className="item-page">
                 <Header />
                 <div className="error-container">
-                    <p>Достопримечательность не найдена</p>
+                    <div className="error-icon">❌</div>
+                    <h2>Достопримечательность не найдена</h2>
+                    <p>Возможно, она была удалена или перемещена</p>
                     <Link to="/">
                         <Button text="Вернуться на главную" />
                     </Link>
@@ -45,50 +67,100 @@ const ItemPage = () => {
     }
 
     return (
-        <div className="App">
+        <div className="item-page">
             <Header />
+            
             <div className="item-detail-container">
-                <div className="item-detail-image">
-                    <img src={landmark.imageUrl} alt={landmark.title} />
+                <div className="item-detail-hero">
+                    <div className="item-detail-image">
+                        <img src={landmark.imageUrl} alt={landmark.title} />
+                        {landmark.onSale && (
+                            <div className="sale-badge">🔥 Скидка</div>
+                        )}
+                    </div>
+                    
+                    <div className="item-detail-actions">
+                        <div className="price-section">
+                            {landmark.price && (
+                                <div className="item-price">
+                                    <span className="price-label">Стоимость:</span>
+                                    <span className="price-value">{landmark.price} ₽</span>
+                                </div>
+                            )}
+                            
+                            {isAdded ? (
+                                <Button
+                                    text="🗑️ Удалить из маршрута" 
+                                    onClick={handleRemoveFromRoute}
+                                    className="remove-button"
+                                />
+                            ) : (
+                                <Button
+                                    text="⭐ Добавить в маршрут" 
+                                    onClick={handleAddToRoute}
+                                    className="add-button"
+                                />
+                            )}
+                        </div>
+                        
+                        <Link to="/" className="back-link">
+                            <Button text="← Назад к списку" variant="secondary" />
+                        </Link>
+                    </div>
                 </div>
+
                 <div className="item-detail-content">
-                    <h1 className="item-detail-title">{landmark.title}</h1>
+                    <div className="content-header">
+                        <h1 className="item-detail-title">{landmark.title}</h1>
+                        {landmark.rating && (
+                            <div className="rating-badge">
+                                ⭐ {landmark.rating}/5
+                            </div>
+                        )}
+                    </div>
+
                     {landmark.description && (
-                        <p className="item-detail-description">{landmark.description}</p>
-                    )}
-                    {landmark.price && (
-                        <p className="item-detail-price">Цена: {landmark.price} руб.</p>
-                    )}
-                    {landmark.rating && (
-                        <p className="item-detail-rating">Рейтинг: {landmark.rating}/5</p>
-                    )}
-                    {landmark.mapUrl && (
-                        <div className="item-detail-map">
-                            <h3>Расположение на карте:</h3>
-                            {landmark.mapUrl}
+                        <div className="description-section">
+                            <h3>📖 Описание</h3>
+                            <p className="item-detail-description">{landmark.description}</p>
                         </div>
                     )}
-                    <Link to="/">
-                        <Button text="Назад к списку" />
-                    </Link>
+
+                    {landmark.mapUrl && (
+                        <div className="map-section">
+                            <h3>🗺️ Расположение на карте</h3>
+                            <div className="map-container">
+                                {landmark.mapUrl}
+                            </div>
+                        </div>
+                    )}
+
+                    <div className="additional-info">
+                        <div className="info-card">
+                            <h4>⏰ Рекомендуемое время</h4>
+                            <p>2-3 часа</p>
+                        </div>
+                        <div className="info-card">
+                            <h4>👥 Для кого</h4>
+                            <p>Взрослые и дети</p>
+                        </div>
+                        <div className="info-card">
+                            <h4>🌤️ Лучшее время</h4>
+                            <p>Круглый год</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-// Выносим header в отдельный компонент для переиспользования
 const Header = () => (
-    <header className="App-header">
-        <div className='App-line'>
-            <div className="left-thing-container">
-                <img className={"left-thing-image"} src={"/header_thing_left.png"} alt="Декоративный элемент" />
-            </div>
-            <div className="header-title-container">
-                <p className={"header-title"}>Курорты Белокурихи</p>
-            </div>
-            <div className="right-thing-container">
-                <img className={"right-thing-image"} src={"/header_thing_right.png"} alt="Декоративный элемент" />
+    <header className="item-header">
+        <div className="header-content">
+            <div className="header-title-wrapper">
+                <h1 className="header-title">🏔️ Курорты Белокурихи</h1>
+                <p className="header-subtitle">Детальная информация</p>
             </div>
         </div>
     </header>
