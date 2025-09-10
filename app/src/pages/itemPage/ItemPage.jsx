@@ -89,22 +89,20 @@ const ItemPage = () => {
                             )}
                             
                             {isAdded ? (
-                                <Button
-                                    text="🗑️ Удалить из маршрута" 
+                                <button
                                     onClick={handleRemoveFromRoute}
-                                    className="remove-button"
-                                />
+                                    className="button remove-button"
+                                >🗑️ Удалить из маршрута</button>
                             ) : (
-                                <Button
-                                    text="⭐ Добавить в маршрут" 
+                                <button
                                     onClick={handleAddToRoute}
-                                    className="add-button"
-                                />
+                                    className="button add-button"
+                                >⭐ Добавить в маршрут</button>
                             )}
                         </div>
                         
                         <Link to="/" className="back-link">
-                            <Button text="← Назад к списку" variant="secondary" />
+                            <button className="button add-button back-link btn custom-btn">← Назад к списку</button>
                         </Link>
                     </div>
                 </div>
