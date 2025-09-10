@@ -29,25 +29,27 @@ function ItemInfo({
 	return (
     <div className={`item-info ${className}`}>
       <div className="item-image">
-      <Link to={`/place/${id}`}>
-        <img 
-          src={imageUrl} 
-          alt={title || "Изображение"} 
-        />
-      </Link>
-    </div>
+        <Link to={`/place/${id}`}>
+          <img 
+            src={imageUrl} 
+            alt={title || "Изображение"} 
+          />
+        </Link>
+      </div>
       
-      {title && <h3 className="item-title">{title}</h3>}
-      
-      {description && <p className="item-description">{description}</p>}
-      
-      <div className="item-footer">
-        {price && <span className="item-price">{price} ₽</span>}
-        {!isAdded ? (
-          <Button text="Добавить в маршрут" onClick={addToRoutes} />
-        ) : (
-          <Button text="Удалить" onClick={() => onRemove(id)} />
-        )}
+      <div className="item-content">
+        {title && <h3 className="item-title">{title}</h3>}
+        
+        {description && <p className="item-description">{description}</p>}
+        
+        <div className="item-footer">
+          {price && <span className="item-price">{price} ₽</span>}
+          {!isAdded ? (
+            <Button text="Добавить в маршрут" onClick={addToRoutes} />
+          ) : (
+            <Button text="Удалить" onClick={() => onRemove(id)} />
+          )}
+        </div>
       </div>
     </div>
   );
