@@ -19,18 +19,23 @@ const RoutePage = () => {
         </div>
       </header>
       <div className="items-container">
-     		{routes.map((item) => {
-					<ItemInfo
-          key={item.id}
-					id={item.id}
-          imageUrl={item.imageUrl}
-          title={item.title}
-          description={item.description}
-          price={item.price}
-          onSale={item.onSale}
-          rating={item.rating}
-          className={item.onSale ? 'sale-item' : ''} />
-				})}
+				{routes.length === 0 ? (
+					<p>Маршрут пуст. Добавьте достопримечательности!</p>
+				) : (
+					routes.map((item) => (
+						<ItemInfo
+          		key={item.id}
+							id={item.id}
+          		imageUrl={item.imageUrl}
+          		title={item.title}
+          		description={item.description}
+          		price={item.price}
+          		onSale={item.onSale}
+          		rating={item.rating}
+							isAdded={true}
+          		className={item.onSale ? 'sale-item' : ''} />
+						))
+					)}
     	</div>
     </div>
 	);

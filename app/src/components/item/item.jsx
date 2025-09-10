@@ -5,13 +5,14 @@ import Button from '../button/button';
 import { routeRepository } from '../../services/repositories/routeRepository';
 
 function ItemInfo({
-	id, 
+	id,
   imageUrl, 
   title, 
   description, 
   price,
   className = '',
-  isFavorite=false
+  isFavorite=false,
+	isAdded=false
 }) {
 	const addToRoutes = () => {
 		const item = {
@@ -44,7 +45,9 @@ function ItemInfo({
       
       <div className="item-footer">
         {price && <span className="item-price">{price} ₽</span>}
-				<Button text="Добавить в маршрут" onClick={addToRoutes} />
+				{!isAdded && (
+					<Button text="Добавить в маршрут" onClick={addToRoutes} />
+				)}
       </div>
     </div>
   );
