@@ -4,7 +4,7 @@
 	left: 0;
 	right: 0;
 	display: flex;
-	background: white;
+	background: #af5d1b;
 	box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
 	padding: 8px 0;
 	z-index: 1000;
@@ -17,14 +17,14 @@
 	align-items: center;
 	justify-content: center;
 	text-decoration: none;
-	color: #666;
+	color: #cbc700;
 	padding: 8px 0;
 	transition: all 0.3s ease;
 	position: relative;
   }
   
   .nav-item-active {
-	color: #007bff;
+	color: #fffb00;
   }
   
   .nav-item-active .nav-icon {
@@ -38,7 +38,7 @@
   }
   
   .nav-label {
-	font-size: 12px;
+	font-size: 16px;
 	font-weight: 500;
   }
   
@@ -51,7 +51,7 @@
 	transform: translateX(-50%);
 	width: 4px;
 	height: 4px;
-	background-color: #007bff;
+	background-color: #fffb00;
 	border-radius: 50%;
   }
   

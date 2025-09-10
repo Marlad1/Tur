@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../../components/button/button"
 import ItemInfo from "../../components/item/item";
 import { landmarkRepository } from "../../services/repositories/landmarksRepository";
+import './MainPage.css'
 
 
 // Главная страница со всеми достопримечательностями
@@ -16,15 +17,23 @@ const MainPage = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <div className='App-line'>
-          <p>Курорт Белокурихи</p>
-        </div>
+          <div className='App-line'>
+              <div className="left-thing-container">
+                  <img className={"left-thing-image"} src={"/header_thing_left.png"}></img>
+              </div>
+              <div className="header-title-container">
+                  <p className={"header-title"}>Курорты Белокурихи</p>
+              </div>
+              <div className="right-thing-container">
+                  <img className={"right-thing-image"} src={"/header_thing_right.png"}></img>
+              </div>
+          </div>
       </header>
-      <div className='change-dom'>
+        <div className='change-dom'>
         <Button text={"Места"}/>
-        <Button text={"Чебубеки"}/>
-      </div>
-      <div className="items-container">
+            <Button text={"Чебубеки"}/>
+        </div>
+        <div className="items-container">
       {landmarks.map((item) => (
         <ItemInfo
           key={item.id}

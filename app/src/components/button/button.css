@@ -1,5 +1,5 @@
 body {
-  background: #e0e5ec;
+  background: #151515;
 }
 .frame {
   width: 90%;
@@ -10,26 +10,26 @@ button {
   margin: 20px;
 }
 .custom-btn {
-  width: 130px;
-  height: 40px;
-  color: #fff;
-  border-radius: 5px;
-  padding: 10px 25px;
-  font-family: 'Lato', sans-serif;
-  font-weight: 500;
+  width: 150px;
+  height: 50px;
+  color: #252525;
+  border-radius: 4px;
+  padding: 5px 25px;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   box-shadow:inset 2px 2px 2px 0px rgba(236, 177, 147, 0.83),
    7px 7px 20px 0px rgba(0,0,0,.1),
    4px 4px 5px 0px rgba(0,0,0,.1);
   outline: none;
 }
 
 .btn {
-  background: #b621fe;
+  background: #ff932f;
   border: none;
   z-index: 1;
 }
@@ -41,15 +41,15 @@ button {
   top: 0;
   right: 0;
   z-index: -1;
-  background-color: #663dff;
+  background-color: #fc7810;
   border-radius: 5px;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   box-shadow:inset 2px 2px 2px 0px rgba(234, 147, 102, 0.83),
    7px 7px 20px 0px rgba(0,0,0,.1),
    4px 4px 5px 0px rgba(0,0,0,.1);
   transition: all 0.3s ease;
 }
 .btn:hover {
-  color: #fff;
+  color: #151515;
 }
 .btn:hover:after {
   left: 0;
