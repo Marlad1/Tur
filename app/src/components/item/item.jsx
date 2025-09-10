@@ -11,7 +11,8 @@ function ItemInfo({
   description, 
   price,
   className = '',
-	isAdded=false
+	isAdded=false,
+	onRemove
 }) {
 	const addToRoutes = () => {
 		const item = {
@@ -22,9 +23,10 @@ function ItemInfo({
 			price: price,
 		};
 		routeRepository.addRoute(item);
+		if (onRemove) onRemove(null);
 	};
 
-  return (
+	return (
     <div className={`item-info ${className}`}>
       <div className='image'>
         <img 
@@ -39,9 +41,11 @@ function ItemInfo({
       
       <div className="item-footer">
         {price && <span className="item-price">{price} ₽</span>}
-				{!isAdded && (
-					<Button text="Добавить в маршрут" onClick={addToRoutes} />
-				)}
+        {!isAdded ? (
+          <Button text="Добавить в маршрут" onClick={addToRoutes} />
+        ) : (
+          <Button text="Удалить" onClick={() => onRemove(id)} />
+        )}
       </div>
     </div>
   );

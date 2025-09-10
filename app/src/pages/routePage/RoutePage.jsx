@@ -11,6 +11,16 @@ const RoutePage = () => {
 		setRoutes(data);
 	}, []);
 
+	const handleRemove = (id) => {
+    if (id) {
+      const updatedRoutes = routeRepository.removeRoute(id);
+      setRoutes(updatedRoutes);
+    } else {
+      // Если id не передан, просто обновляем данные из хранилища
+      setRoutes(routeRepository.getRoutes());
+    }
+  };
+
 	return (
 		<div className="App">
       <header className="App-header">
@@ -33,7 +43,9 @@ const RoutePage = () => {
           		onSale={item.onSale}
           		rating={item.rating}
 							isAdded={true}
-          		className={item.onSale ? 'sale-item' : ''} />
+							onRemove={handleRemove}
+          		className={item.onSale ? 'sale-item' : ''}
+							/>
 						))
 					)}
     	</div>

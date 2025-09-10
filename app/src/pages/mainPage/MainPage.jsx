@@ -33,6 +33,7 @@ const MainPage = () => {
       {landmarks.map((item) => (
         <ItemInfo
           key={item.id}
+		  id={item.id}
           imageUrl={item.imageUrl}
           title={item.title}
           description={item.description}
