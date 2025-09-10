@@ -18,14 +18,8 @@ const MainPage = () => {
     <div className="App">
       <header className="App-header">
           <div className='App-line'>
-              <div className="left-thing-container">
-                  <img className={"left-thing-image"} src={"/header_thing_left.png"}></img>
-              </div>
               <div className="header-title-container">
                   <p className={"header-title"}>Курорты Белокурихи</p>
-              </div>
-              <div className="right-thing-container">
-                  <img className={"right-thing-image"} src={"/header_thing_right.png"}></img>
               </div>
           </div>
       </header>
@@ -33,7 +27,7 @@ const MainPage = () => {
       {landmarks.map((item) => (
         <ItemInfo
           key={item.id}
-		  id={item.id}
+		      id={item.id}
           imageUrl={item.imageUrl}
           title={item.title}
           description={item.description}

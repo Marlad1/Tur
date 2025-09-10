@@ -17,39 +17,9 @@ body{
     padding-top: 0.5%;
 }
 
-/*HEADER LEFT IMAGE*/
-.left-thing-container{
-    width: 20%;
-    height: 100%;
-    max-height: 100%;
-    object-fit: fill !important;
-
-}
-
-.left-thing-image{
-    vertical-align: middle;
-    inline-size: 100%;
-    height: 98px;
-    border-radius: 0 !important;
-}
-
-/*HEADER RIGHT IMAGE*/
-.right-thing-container{
-    width: 20%;
-    height: 100%;
-    max-height: 100%;
-}
-
-.right-thing-image{
-    vertical-align: middle;
-    inline-size: 100%;
-    height: 98px;
-    border-radius: 0 !important;
-}
-
 /*HEADER TEXT*/
 .header-title-container{
-    width: 60%;
+    width: 100%;
     background-color: #ff932f;
     height: 100%;
     max-height: 100%;
