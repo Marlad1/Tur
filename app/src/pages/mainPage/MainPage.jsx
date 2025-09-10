@@ -29,10 +29,6 @@ const MainPage = () => {
               </div>
           </div>
       </header>
-        <div className='change-dom'>
-        <Button text={"Места"}/>
-            <Button text={"Чебубеки"}/>
-        </div>
         <div className="items-container">
       {landmarks.map((item) => (
         <ItemInfo

@@ -11,7 +11,6 @@ function ItemInfo({
   description, 
   price,
   className = '',
-  isFavorite=false,
 	isAdded=false
 }) {
 	const addToRoutes = () => {
@@ -31,12 +30,7 @@ function ItemInfo({
         <img 
           src={imageUrl} 
           alt={title || "Изображение"} 
-        />    
-        <div className='icon-overlay'>
-            <FaRegHeart className='icon-outline'/>
-            {isFavorite ? <FaHeart color='red' /> : <FaHeart color='white'/>}
-        </div>
-        
+        />
       </div>
       
       {title && <h3 className="item-title">{title}</h3>}
