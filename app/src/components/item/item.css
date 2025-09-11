@@ -55,6 +55,12 @@
     font-weight: 500;
     line-height: 1.5;
     flex-grow: 1;
+	display: -webkit-box;
+	-webkit-line-clamp: 3; /* Количество строк до обрезки */
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-height: 4.2em; /* Примерно 3 строки */
 }
 
 .item-footer {
