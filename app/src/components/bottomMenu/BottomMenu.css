@@ -3,7 +3,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+  background: linear-gradient(135deg, #52914d 0%, #066402 100%);
   backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 1000;
@@ -53,7 +53,7 @@
   transform: translateX(-50%);
   width: 24px;
   height: 3px;
-  background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+  background: linear-gradient(45deg, #153912, #0f4410);
   border-radius: 3px;
 }
 
@@ -82,9 +82,9 @@
   right: -4px;
   width: 8px;
   height: 8px;
-  background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+  background: linear-gradient(45deg, #124210, #0d5d16);
   border-radius: 50%;
-  border: 2px solid #667eea;
+  border: 2px solid #ffffff;
   animation: pulse 2s infinite;
 }
 
