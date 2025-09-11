@@ -3,18 +3,26 @@ import { useParams, Link } from "react-router-dom";
 import Button from "../../components/button/button";
 import { landmarkRepository } from "../../services/repositories/landmarksRepository";
 import { routeRepository } from "../../services/repositories/routeRepository";
+import { routeRepository } from "../../services/repositories/routeRepository";
 import './ItemPage.css'
 
 const ItemPage = () => {
     const { id } = useParams();
+    const { id } = useParams();
     const [landmark, setLandmark] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isAdded, setIsAdded] = useState(false);
     const [isAdded, setIsAdded] = useState(false);
 
     useEffect(() => {
         setTimeout(() => {
             const item = landmarkRepository.getLandmarkById(Number(id));
             setLandmark(item);
+            
+            // Проверяем, добавлен ли уже в маршрут
+            const routes = routeRepository.getRoutes();
+            setIsAdded(routes.some(route => route.id === item?.id));
+            
             
             // Проверяем, добавлен ли уже в маршрут
             const routes = routeRepository.getRoutes();
@@ -38,11 +46,28 @@ const ItemPage = () => {
         }
     };
 
+    const handleAddToRoute = () => {
+        if (landmark) {
+            routeRepository.addRoute(landmark);
+            setIsAdded(true);
+        }
+    };
+
+    const handleRemoveFromRoute = () => {
+        if (landmark) {
+            routeRepository.removeRoute(landmark.id);
+            setIsAdded(false);
+        }
+    };
+
     if (loading) {
         return (
             <div className="item-page">
+            <div className="item-page">
                 <Header />
                 <div className="loading-container">
+                    <div className="loading-spinner"></div>
+                    <p>Загружаем информацию...</p>
                     <div className="loading-spinner"></div>
                     <p>Загружаем информацию...</p>
                 </div>
@@ -53,8 +78,12 @@ const ItemPage = () => {
     if (!landmark) {
         return (
             <div className="item-page">
+            <div className="item-page">
                 <Header />
                 <div className="error-container">
+                    <div className="error-icon">❌</div>
+                    <h2>Достопримечательность не найдена</h2>
+                    <p>Возможно, она была удалена или перемещена</p>
                     <div className="error-icon">❌</div>
                     <h2>Достопримечательность не найдена</h2>
                     <p>Возможно, она была удалена или перемещена</p>
@@ -68,7 +97,9 @@ const ItemPage = () => {
 
     return (
         <div className="item-page">
+        <div className="item-page">
             <Header />
+            
             
             <div className="item-detail-container">
                 <div className="item-detail-hero">
@@ -107,7 +138,17 @@ const ItemPage = () => {
                     </div>
                 </div>
 
+
                 <div className="item-detail-content">
+                    <div className="content-header">
+                        <h1 className="item-detail-title">{landmark.title}</h1>
+                        {landmark.rating && (
+                            <div className="rating-badge">
+                                ⭐ {landmark.rating}/5
+                            </div>
+                        )}
+                    </div>
+
                     <div className="content-header">
                         <h1 className="item-detail-title">{landmark.title}</h1>
                         {landmark.rating && (
@@ -122,7 +163,12 @@ const ItemPage = () => {
                             <h3>📖 Описание</h3>
                             <p className="item-detail-description">{landmark.description}</p>
                         </div>
+                        <div className="description-section">
+                            <h3>📖 Описание</h3>
+                            <p className="item-detail-description">{landmark.description}</p>
+                        </div>
                     )}
+
 
                     {landmark.mapUrl && (
                         <div className="map-section">
@@ -130,8 +176,28 @@ const ItemPage = () => {
                             <div className="map-container">
                                 {landmark.mapUrl}
                             </div>
+                        <div className="map-section">
+                            <h3>🗺️ Расположение на карте</h3>
+                            <div className="map-container">
+                                {landmark.mapUrl}
+                            </div>
                         </div>
                     )}
+
+                    <div className="additional-info">
+                        <div className="info-card">
+                            <h4>⏰ Рекомендуемое время</h4>
+                            <p>2-3 часа</p>
+                        </div>
+                        <div className="info-card">
+                            <h4>👥 Для кого</h4>
+                            <p>Взрослые и дети</p>
+                        </div>
+                        <div className="info-card">
+                            <h4>🌤️ Лучшее время</h4>
+                            <p>Круглый год</p>
+                        </div>
+                    </div>
 
                     <div className="additional-info">
                         <div className="info-card">
