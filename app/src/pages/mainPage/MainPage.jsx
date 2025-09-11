@@ -26,6 +26,20 @@ const MainPage = () => {
 			</div>
 		  </div>
 		</header>
+
+		<>
+			<div className="left-hero">
+				<img 
+					src="/main.png" 
+					alt="Курорты Белокурихи" 
+					className="left-hero-image"
+				/>
+				<div className="left-hero-text">
+					<h1>Курорты Белокурихи</h1>
+					<p>Откройте для себя уникальные места отдыха</p>
+				</div>
+			</div>
+		</>
   
 		<main className="main-content">
 		  {isLoading ? (
