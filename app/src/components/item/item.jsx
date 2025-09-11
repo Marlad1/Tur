@@ -44,7 +44,8 @@ function ItemInfo({
         
         <div className="item-footer">
           {price && <span className="item-price">{price} ₽</span>}
-          {!isAdded ? (
+          {!price && <span></span>}
+		  {!isAdded ? (
             <Button text="Добавить в маршрут" onClick={addToRoutes} />
           ) : (
             <Button text="Удалить" onClick={() => onRemove(id)} />

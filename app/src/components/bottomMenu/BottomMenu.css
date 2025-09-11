@@ -3,7 +3,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(135deg, #52914d 0%, #066402 100%);
+  background: linear-gradient(135deg, #52914de0 0%, #056402d7 100%);
   backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 1000;
@@ -191,7 +191,6 @@
 /* Темная тема */
 @media (prefers-color-scheme: dark) {
   .bottom-nav {
-    background: linear-gradient(135deg, rgba(70, 128, 68, 0.773), rgba(190, 233, 17, 0.754));
     border-top-color: rgba(255, 255, 255, 0.1);
   }
 }
