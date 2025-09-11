@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { routeRepository } from "../../services/repositories/routeRepository";
 import ItemInfo from "../../components/item/item";
 import './RoutePage.css';
+import { Link } from "react-router-dom";
 
 // Страница с проложенным путём
 const RoutePage = () => {
@@ -65,7 +66,10 @@ const RoutePage = () => {
             <div className="empty-icon">🗺️</div>
             <h2>Маршрут пуст</h2>
             <p>Начните добавлять достопримечательности, чтобы создать свой идеальный маршрут!</p>
-            <button className="cta-button">Исследовать места</button>
+            <Link to="/">
+              <button className="cta-button">Исследовать места</button>
+            </Link>
+            
           </div>
         ) : (
           <div className="route-content-wrapper">

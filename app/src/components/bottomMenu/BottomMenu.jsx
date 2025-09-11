@@ -5,8 +5,8 @@ const BottomMenu = () => {
 	const location = useLocation();
 
 	const menuItems = [
-		{ path: '/main', icon: '🏠', label: 'Главная' },
-    	{ path: '/route', icon: '⭐', label: 'Маршрут' }
+		{ path: '/main', icon: '', label: 'Главная' },
+    	{ path: '/route', icon: '', label: 'Маршрут' }
 	];
 
 	return (

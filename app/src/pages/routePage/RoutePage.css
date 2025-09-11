@@ -159,7 +159,7 @@
   }
   
   .route-summary {
-	position: sticky;
+	/* position: sticky; */
 	bottom: 2rem;
 	margin-top: 2rem;
   }
@@ -424,7 +424,10 @@
 	transform: translateY(-2px);
 	box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
   }
-  
+  .item-footer button:active {
+    transform: translateY(0) scale(0.95);
+    box-shadow: 0 2px 10px rgba(76, 175, 80, 0.2);
+}
   /* Адаптивность для карточек */
   @media (max-width: 1024px) {
 	.items-grid {
